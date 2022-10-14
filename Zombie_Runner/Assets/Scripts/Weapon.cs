@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     public float range = 100f;
 
     public GameObject rayPoint;
+    public ParticleSystem muzzleFlash;
 
     void Update()
     {
@@ -19,10 +20,18 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        muzzleFlash.Play();
+
         RaycastHit hit;
         if (Physics.Raycast(rayPoint.transform.position, rayPoint.transform.forward, out hit, range))
         {
             Debug.Log(hit.transform.name);
+
+            Enemy enemy = hit.transform.GetComponent<Enemy>();
+            if( enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
         }
     }
 }
