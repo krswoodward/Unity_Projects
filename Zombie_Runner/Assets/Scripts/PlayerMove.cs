@@ -9,10 +9,16 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward, Space.World);
-        }
+        /* Manual Forward Movment...
+
+         if (Input.GetKey(KeyCode.Space))
+         {
+             transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward, Space.World);
+         }
+        */
+
+        transform.Translate(playerSpeed * Time.deltaTime * Vector3.forward, Space.World);
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             if (this.gameObject.transform.position.x > LevelBounds.leftBounds)

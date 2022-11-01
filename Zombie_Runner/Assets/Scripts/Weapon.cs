@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
     void Shoot()
     {
         muzzleFlash.Play();
+        FindObjectOfType<AudioManager>().Play("Short Gunshot");
 
         RaycastHit hit;
         if (Physics.Raycast(rayPoint.transform.position, rayPoint.transform.forward, out hit, range))
